@@ -34,6 +34,9 @@ def writehtml(cards):
     str += '<table>\n'
 
     for card in cards['video-card']:
+        if card.price == moneyed.Money('0.00', currency='CAD'):
+            continue
+
         str += wrap('tr',
                     wrap('td', card.brand) + wrap('td', card.model)
                     + wrap('td', card.chipset) + wrap('td', card.vram.gb) + wrap('td', card.price)
